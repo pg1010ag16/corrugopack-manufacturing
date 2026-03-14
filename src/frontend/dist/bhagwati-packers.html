@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhagwati Packers | Corrugated Box Manufacturer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a5f7a;
+            --primary-dark: #134b61;
+            --secondary: #f4a261;
+            --accent: #2a9d8f;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --white: #ffffff;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: var(--white); padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1); z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .menu-btn span { width: 25px; height: 3px; background: var(--dark); transition: 0.3s; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 6rem 5% 4rem;
+            background: url('assets/generated/hero-factory-bg.dim_1920x1080.jpg') center/cover no-repeat;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(0,20,20,0.2000) 0%, rgba(19,75,97,0.88) 100%);
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 3.5rem; color: var(--white); margin-bottom: 1rem; animation: fadeInUp 1s ease; }
+        .hero h1 span { color: var(--secondary); }
+        .hero p { font-size: 1.25rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; animation: fadeInUp 1s ease 0.2s both; }
+        .hero-badges { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; animation: fadeInUp 1s ease 0.4s both; }
+        .badge { background: rgba(255,255,255,0.15); padding: 0.75rem 1.5rem; border-radius: 50px; color: var(--white); font-size: 0.9rem; backdrop-filter: blur(10px); }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 1s ease 0.6s both; }
+        .btn { padding: 1rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Poppins', sans-serif; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-primary { background: var(--secondary); color: var(--dark); }
+        .btn-primary:hover { background: #e8944f; transform: translateY(-3px); }
+        .btn-outline { border: 2px solid var(--white); color: var(--white); background: transparent; }
+        .btn-outline:hover { background: var(--white); color: var(--primary); }
+
+        /* Sections */
+        section { padding: 5rem 5%; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .section-header p { color: var(--gray); max-width: 600px; margin: 0 auto; }
+        .underline { width: 80px; height: 4px; background: var(--secondary); margin: 1rem auto; border-radius: 2px; }
+
+        /* About */
+        .about { background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-image-box { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: 20px; padding: 3rem; color: var(--white); text-align: center; }
+        .about-image-box svg { width: 150px; height: 150px; margin-bottom: 1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+        .stat { background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 10px; }
+        .stat h3 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+        .stat p { font-size: 0.85rem; opacity: 0.9; }
+        .about-content h3 { font-size: 1.75rem; color: var(--primary); margin-bottom: 1rem; }
+        .about-content p { color: var(--gray); margin-bottom: 1.5rem; }
+        .features-list { list-style: none; }
+        .features-list li { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--dark); }
+        .features-list li::before { content: '✓'; background: var(--accent); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+
+        /* Products */
+        .products { background: var(--light); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .product-img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .product-content { padding: 2rem; }
+        .product-content h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 0.75rem; }
+        .product-content p { color: var(--gray); margin-bottom: 1rem; }
+        .product-features { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .product-features span { background: var(--light); padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem; color: var(--primary); }
+
+        /* Infrastructure */
+        .infrastructure { background: var(--white); }
+        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .infra-card {
+            text-align: center; padding: 0; background: var(--light);
+            border-radius: 15px; overflow: hidden;
+            transition: all 0.3s; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .infra-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .infra-card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .infra-card-body { padding: 1.5rem; }
+        .infra-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .infra-card p { color: var(--gray); font-size: 0.9rem; }
+        .infra-card .click-hint { font-size: 0.75rem; color: var(--primary); margin-top: 0.5rem; font-weight: 500; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7); z-index: 2000;
+            align-items: center; justify-content: center; padding: 1rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--white); border-radius: 20px; max-width: 600px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            animation: fadeInUp 0.3s ease;
+        }
+        .modal-img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px 20px 0 0; }
+        .modal-body { padding: 2rem; }
+        .modal-body h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 1rem; }
+        .modal-body p { color: var(--gray); margin-bottom: 1rem; line-height: 1.8; }
+        .modal-close {
+            display: block; margin: 1rem auto 0;
+            background: var(--primary); color: white;
+            border: none; padding: 0.75rem 2rem; border-radius: 50px;
+            font-family: 'Poppins', sans-serif; font-size: 1rem; cursor: pointer;
+            transition: background 0.3s;
+        }
+        .modal-close:hover { background: var(--primary-dark); }
+
+        /* Contact */
+        .contact { background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%); color: var(--white); }
+        .contact .section-header h2 { color: var(--white); }
+        .contact .section-header p { color: rgba(255,255,255,0.8); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; }
+        .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-card { background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; display: flex; align-items: flex-start; gap: 1rem; backdrop-filter: blur(10px); }
+        .contact-card-icon { width: 50px; height: 50px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-card-icon svg { width: 24px; height: 24px; fill: var(--dark); }
+        .contact-card h4 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+        .contact-card p { color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+        .contact-card a { color: var(--secondary); text-decoration: none; }
+        .contact-buttons { display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { background: #1fb855; }
+        .btn-call { background: var(--secondary); color: var(--dark); }
+        .btn-call:hover { background: #e8944f; }
+        .map-container { border-radius: 15px; overflow: hidden; min-height: 400px; }
+        .map-container iframe { width: 100%; height: 100%; min-height: 400px; border: 0; }
+
+        /* Footer */
+        footer { background: var(--dark); color: var(--white); text-align: center; padding: 2rem 5%; }
+        footer .logo { margin-bottom: 1rem; display: block; }
+        footer p { opacity: 0.8; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links { position: fixed; top: 70px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 2rem; gap: 1.5rem; transform: translateY(-150%); transition: transform 0.3s; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+            .nav-links.active { transform: translateY(0); }
+            .menu-btn { display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .cta-buttons, .contact-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-badges { gap: 1rem; }
+            .badge { padding: 0.5rem 1rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">Bhagwati<span>Packers</span></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#products" onclick="closeMenu()">Products</a></li>
+        <li><a href="#infrastructure" onclick="closeMenu()">Infrastructure</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Bhagwati <span>Packers</span></h1>
+        <p>Leading manufacturer of premium automatic corrugated 5-ply &amp; 3-ply boxes and custom packaging solutions.</p>
+        <div class="hero-badges">
+            <span class="badge">📦 5-Ply &amp; 3-Ply Specialists</span>
+            <span class="badge">🏭 Automatic Plant</span>
+            <span class="badge">✨ Custom Solutions</span>
+        </div>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Get Quote</a>
+            <a href="#products" class="btn btn-outline">View Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="section-header">
+        <h2>About Us</h2>
+        <div class="underline"></div>
+        <p>Your trusted partner in corrugated packaging solutions</p>
+    </div>
+    <div class="about-grid">
+        <div class="about-image fade-in">
+            <div class="about-image-box">
+                <svg viewBox="0 0 100 100" fill="white">
+                    <rect x="10" y="30" width="80" height="60" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+                    <path d="M10 45 L50 25 L90 45" stroke="currentColor" stroke-width="3" fill="none"/>
+                    <line x1="50" y1="25" x2="50" y2="55" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div class="stats-grid">
+                    <div class="stat"><h3>27+</h3><p>Years Experience</p></div>
+                    <div class="stat"><h3>500+</h3><p>Happy Clients</p></div>
+                    <div class="stat"><h3>10M+</h3><p>Boxes Delivered</p></div>
+                    <div class="stat"><h3>24/7</h3><p>Support</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="about-content fade-in">
+            <h3>Excellence in Corrugated Packaging</h3>
+            <p>Bhagwati Packers is a leading manufacturer of automatic corrugated 5-ply and 3-ply boxes. We combine state-of-the-art machinery with quality raw materials to deliver packaging that truly protects your products.</p>
+            <p>Our commitment to quality, innovation, and customer satisfaction has made us a preferred choice for businesses across FMCG, electronics, pharmaceuticals, and e-commerce sectors.</p>
+            <ul class="features-list">
+                <li>Premium quality raw materials</li>
+                <li>Automatic corrugated box manufacturing</li>
+                <li>Customized packaging solutions</li>
+                <li>Competitive pricing</li>
+                <li>On-time delivery guarantee</li>
+                <li>Eco-friendly packaging options</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+    <div class="section-header">
+        <h2>Our Products</h2>
+        <div class="underline"></div>
+        <p>Comprehensive range of corrugated packaging solutions for every need</p>
+    </div>
+    <div class="products-grid">
+        <div class="product-card fade-in">
+            <img src="assets/generated/product-corrugated-boxes.dim_600x400.jpg" alt="Corrugated Boxes" class="product-img">
+            <div class="product-content">
+                <h3>Corrugated Boxes</h3>
+                <p>Heavy-duty automatic corrugated boxes in 3-ply and 5-ply variants. Perfect for shipping, storage, and industrial applications.</p>
+                <div class="product-features">
+                    <span>3-Ply</span><span>5-Ply</span><span>Die-Cut</span><span>Printed</span>
+                </div>
+            </div>
+        </div>
+        <div class="product-card fade-in">
+            <img src="assets/generated/product-duplex-boxes.dim_600x400.jpg" alt="Duplex Boxes" class="product-img">
+            <div class="product-content">
+                <h3>Duplex Boxes</h3>
+                <p>Premium duplex board boxes with superior print quality. Ideal for retail packaging, gift boxes, and product display.</p>
+                <div class="product-features">
+                    <span>Grey Back</span><span>White Back</span><span>Coated</span><span>Laminated</span>
+                </div>
+            </div>
+        </div>
+        <div class="product-card fade-in">
+            <img src="assets/generated/product-custom-packaging.dim_600x400.jpg" alt="Custom Packaging" class="product-img">
+            <div class="product-content">
+                <h3>Custom Packaging</h3>
+                <p>Tailor-made packaging solutions designed to your exact specifications. From concept to delivery, we bring your vision to life.</p>
+                <div class="product-features">
+                    <span>Custom Size</span><span>Branding</span><span>Inserts</span><span>Special Shapes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Infrastructure -->
+<section class="infrastructure" id="infrastructure">
+    <div class="section-header">
+        <h2>Our Infrastructure</h2>
+        <div class="underline"></div>
+        <p>Modern machinery and facilities for superior production — click any machine to learn more</p>
+    </div>
+    <div class="infra-grid">
+        <div class="infra-card fade-in" onclick="openModal('corrugation')">
+            <img src="assets/generated/machine-corrugation.dim_400x300.jpg" alt="Corrugation Plant" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Corrugation Plant</h3>
+                <p>High-speed automatic corrugation machine for flawless flute formation</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+        <div class="infra-card fade-in" onclick="openModal('printing')">
+            <img src="assets/generated/machine-printing.dim_400x300.jpg" alt="Printing Machine" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Printing Machine</h3>
+                <p>Multi-color flexographic printing for vibrant, precise prints</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+        <div class="infra-card fade-in" onclick="openModal('diecutting')">
+            <img src="assets/generated/machine-die-cutting.dim_400x300.jpg" alt="Die Cutting" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Die Cutting</h3>
+                <p>Precision die-cutting machines for accurate shapes and sizes</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+        <div class="infra-card fade-in" onclick="openModal('slitting')">
+            <img src="assets/generated/machine-slitting.dim_400x300.jpg" alt="Slitting Machine" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Slitting Machine</h3>
+                <p>Automatic slitting and creasing for perfect fold lines</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+        <div class="infra-card fade-in" onclick="openModal('stitching')">
+            <img src="assets/generated/machine-stitching.dim_400x300.jpg" alt="Stitching &amp; Gluing" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Stitching &amp; Gluing</h3>
+                <p>Semi-automatic stitching and gluing for strong box assembly</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+        <div class="infra-card fade-in" onclick="openModal('laminator')">
+            <img src="assets/generated/machine-laminator.dim_400x300.jpg" alt="Laminator for Pasting" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Laminator for Pasting</h3>
+                <p>High-precision laminator for pasting duplex and corrugated sheets</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+        <div class="infra-card fade-in" onclick="openModal('quality')">
+            <img src="assets/generated/machine-quality-control.dim_400x300.jpg" alt="Quality Control" class="infra-card-img">
+            <div class="infra-card-body">
+                <h3>Quality Control</h3>
+                <p>Rigorous testing lab for burst strength and compression tests</p>
+                <p class="click-hint">Click to learn more →</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <div class="section-header">
+        <h2>Contact Us</h2>
+        <div class="underline"></div>
+        <p>Get in touch for quotes, inquiries, or custom packaging solutions</p>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-info fade-in">
+            <div class="contact-card">
+                <div class="contact-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div>
+                    <h4>Our Location</h4>
+                    <p><a href="https://maps.app.goo.gl/tK56qZm2p7ZYzrZs7" target="_blank">View on Google Maps</a></p>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+                <div>
+                    <h4>Phone</h4>
+                    <p>Anshul Garg: <a href="tel:+919311059948">+91 93110 59948</a></p>
+                    <p>Prince Garg: <a href="tel:+919718842516">+91 97188 42516</a></p>
+                    <p>Harsh Garg: <a href="tel:+919599536329">+91 95995 36329</a></p>
+   
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
+                <div>
+                    <h4>Email</h4>
+                    <p><a href="mailto:bhagwatibox@gmail.com">bhagwatibox@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://wa.me/919311059948?text=Hello%2C%20I%20am%20interested%20in%20your%20packaging%20solutions" target="_blank" class="btn btn-whatsapp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="tel:+919311059948" class="btn btn-call">Call Now</a>
+            </div>
+        </div>
+        <div class="map-container fade-in">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d3496.151352872686!2d76.9191691!3d28.8045632!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1773475155800!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="logo">Bhagwati<span>Packers</span></div>
+    <p>&copy; 2026 Bhagwati Packers. All Rights Reserved.</p>
+    <p style="margin-top:0.5rem;font-size:0.9rem;">Quality Corrugated Packaging Solutions for Every Industry</p>
+</footer>
+
+<!-- Modals -->
+<div class="modal-overlay" id="modal-corrugation" onclick="closeModal(event, 'corrugation')">
+    <div class="modal">
+        <img src="assets/generated/machine-corrugation.dim_400x300.jpg" alt="Corrugation Plant" class="modal-img">
+        <div class="modal-body">
+            <h3>Corrugation Plant</h3>
+            <p>Our high-speed automatic corrugation machine is the heart of our manufacturing facility. It produces perfectly formed corrugated sheets in both 3-ply and 5-ply configurations with consistent flute formation.</p>
+            <p>The machine operates at high speed ensuring large volume output while maintaining tight quality tolerances. It handles a wide range of flute types (B, C, E) to meet different strength requirements.</p>
+            <button class="modal-close" onclick="closeModalDirect('corrugation')">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-printing" onclick="closeModal(event, 'printing')">
+    <div class="modal">
+        <img src="assets/generated/machine-printing.dim_400x300.jpg" alt="Printing Machine" class="modal-img">
+        <div class="modal-body">
+            <h3>Printing Machine</h3>
+            <p>Our multi-color flexographic printing machine delivers sharp, vibrant prints directly on corrugated sheets. It supports up to 4 color printing with precise registration for professional-grade results.</p>
+            <p>Ideal for custom branding, product information, and barcodes — ensuring your packaging stands out on the shelf and in the warehouse.</p>
+            <button class="modal-close" onclick="closeModalDirect('printing')">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-diecutting" onclick="closeModal(event, 'diecutting')">
+    <div class="modal">
+        <img src="assets/generated/machine-die-cutting.dim_400x300.jpg" alt="Die Cutting" class="modal-img">
+        <div class="modal-body">
+            <h3>Die Cutting Machine</h3>
+            <p>Our precision die-cutting machines cut corrugated sheets into exact box shapes and sizes with millimeter-level accuracy. Custom dies can be made for any box design or special shape.</p>
+            <p>This machine handles everything from standard RSC boxes to complex die-cut trays, partitions, and display units.</p>
+            <button class="modal-close" onclick="closeModalDirect('diecutting')">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-slitting" onclick="closeModal(event, 'slitting')">
+    <div class="modal">
+        <img src="assets/generated/machine-slitting.dim_400x300.jpg" alt="Slitting Machine" class="modal-img">
+        <div class="modal-body">
+            <h3>Slitting Machine</h3>
+            <p>Our automatic slitting and scoring machine creates precise fold lines (scores) and cuts sheets to exact widths. Clean scores ensure boxes fold crisply without cracking the liner.</p>
+            <p>The machine handles various board thicknesses and can be set up quickly for different box dimensions.</p>
+            <button class="modal-close" onclick="closeModalDirect('slitting')">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-stitching" onclick="closeModal(event, 'stitching')">
+    <div class="modal">
+        <img src="assets/generated/machine-stitching.dim_400x300.jpg" alt="Stitching &amp; Gluing" class="modal-img">
+        <div class="modal-body">
+            <h3>Stitching &amp; Gluing Machine</h3>
+            <p>Our semi-automatic stitching and gluing unit assembles cut-and-scored blanks into finished boxes. Metal stitching pins or hot-melt glue are used depending on the box type and strength requirement.</p>
+            <p>This stage ensures every box has strong, reliable joints that hold up during transport and stacking.</p>
+            <button class="modal-close" onclick="closeModalDirect('stitching')">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-laminator" onclick="closeModal(event, 'laminator')">
+    <div class="modal">
+        <img src="assets/generated/machine-laminator.dim_400x300.jpg" alt="Laminator for Pasting" class="modal-img">
+        <div class="modal-body">
+            <h3>Laminator for Pasting</h3>
+            <p>Our high-precision laminator bonds duplex or kraft paper onto corrugated sheets with uniform pressure and glue application. This produces smooth, high-quality outer surfaces ideal for printing.</p>
+            <p>The laminator ensures bubble-free, wrinkle-free pasting across the entire sheet, resulting in premium finish boxes suitable for retail and export packaging.</p>
+            <button class="modal-close" onclick="closeModalDirect('laminator')">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-quality" onclick="closeModal(event, 'quality')">
+    <div class="modal">
+        <img src="assets/generated/machine-quality-control.dim_400x300.jpg" alt="Quality Control" class="modal-img">
+        <div class="modal-body">
+            <h3>Quality Control Lab</h3>
+            <p>Our dedicated QC lab performs rigorous testing on every batch — including Burst Factor Test (BFT), Edge Crush Test (ECT), Box Compression Test (BCT), and moisture content checks.</p>
+            <p>We ensure every box meets or exceeds the required strength standards before dispatch, giving you confidence in the protection of your products.</p>
+            <button class="modal-close" onclick="closeModalDirect('quality')">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    function closeMenu() { document.getElementById('navLinks').classList.remove('active'); }
+
+    function openModal(id) {
+        document.getElementById('modal-' + id).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(event, id) {
+        if (event.target === document.getElementById('modal-' + id)) closeModalDirect(id);
+    }
+    function closeModalDirect(id) {
+        document.getElementById('modal-' + id).classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.active').forEach(m => {
+                m.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        document.querySelector('nav').style.background =
+            window.scrollY > 100 ? 'rgba(255,255,255,0.98)' : 'var(--white)';
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const t = document.querySelector(this.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+</body>
+</html>
